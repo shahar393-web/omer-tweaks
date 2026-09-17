@@ -3,7 +3,7 @@
 Plugin Name: Omer Tweaks
 Plugin URI: https://github.com/shahar393-web/omer-tweaks
 Description: מתגים להסתרת אלמנטים באתר של עומר (דשבורד, עמוד קורס, מסך שיעור). מזריק ישירות בחזית — לא תלוי בקאש של Elementor. העיצוב נשאר ב-Elementor; התוסף רק מסתיר/מציג.
-Version: 1.0.1
+Version: 1.0.2
 Author: Shahar
 Update URI: https://github.com/shahar393-web/omer-tweaks
 */
