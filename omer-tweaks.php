@@ -3,7 +3,7 @@
 Plugin Name: Omer Tweaks
 Plugin URI: https://github.com/shahar393-web/omer-tweaks
 Description: מתגים להסתרת אלמנטים באתר של עומר (דשבורד, עמוד קורס, מסך שיעור). מזריק ישירות בחזית — לא תלוי בקאש של Elementor. העיצוב נשאר ב-Elementor; התוסף רק מסתיר/מציג.
-Version: 1.0.2
+Version: 1.0.3
 Author: Shahar
 Update URI: https://github.com/shahar393-web/omer-tweaks
 */
@@ -83,6 +83,13 @@ function omt_toggles_list() {
 			'group' => 'מסך שיעור',
 			'css'   => '.tutor-learning-pages-item[x-ref="trigger"]{display:none!important;}',
 		),
+		// --- הקורסים שלי ---
+		'hide_courses_filter_strip' => array(
+			'label'   => 'להסתיר את שורת הסינון בעמוד "הקורסים שלי" (פעיל / רשימת משאלות / ניסיונות שאלון)',
+			'group'   => 'הקורסים שלי',
+			'css'     => '.tutor-dashboard-courses-wrapper .tutor-nav.tutor-nav-primary{display:none!important;}',
+			'default' => 1,
+		),
 	);
 }
 
@@ -104,7 +111,8 @@ function omt_build_css() {
 	$toggles = omt_toggles_list();
 	$css     = '';
 	foreach ( $toggles as $key => $data ) {
-		if ( ! empty( $opts[ $key ] ) ) {
+		$on = isset( $opts[ $key ] ) ? ! empty( $opts[ $key ] ) : ! empty( $data['default'] );
+		if ( $on ) {
 			$css .= $data['css'] . "\n";
 		}
 	}
@@ -194,10 +202,11 @@ function omt_settings_page() {
 				<div class="omt-section">
 					<h2 class="omt-section-title"><?php echo esc_html( $group_name ); ?></h2>
 					<?php foreach ( $items as $key => $data ) : ?>
+						<?php $omt_on = isset( $opts[ $key ] ) ? ! empty( $opts[ $key ] ) : ! empty( $data['default'] ); ?>
 						<label class="omt-row">
 							<span class="omt-row-label"><?php echo esc_html( $data['label'] ); ?></span>
 							<span class="omt-switch">
-								<input type="checkbox" name="omt_toggles[<?php echo esc_attr( $key ); ?>]" value="1" <?php checked( ! empty( $opts[ $key ] ) ); ?> />
+								<input type="checkbox" name="omt_toggles[<?php echo esc_attr( $key ); ?>]" value="1" <?php checked( $omt_on ); ?> />
 								<span class="omt-slider"></span>
 							</span>
 						</label>
