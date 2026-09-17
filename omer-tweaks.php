@@ -3,7 +3,7 @@
 Plugin Name: Omer Tweaks
 Plugin URI: https://github.com/shahar393-web/omer-tweaks
 Description: מתגים להסתרת אלמנטים באתר של עומר (דשבורד, עמוד קורס, מסך שיעור). מזריק ישירות בחזית — לא תלוי בקאש של Elementor. העיצוב נשאר ב-Elementor; התוסף רק מסתיר/מציג.
-Version: 1.0.3
+Version: 1.0.4
 Author: Shahar
 Update URI: https://github.com/shahar393-web/omer-tweaks
 */
@@ -87,7 +87,7 @@ function omt_toggles_list() {
 		'hide_courses_filter_strip' => array(
 			'label'   => 'להסתיר את שורת הסינון בעמוד "הקורסים שלי" (פעיל / רשימת משאלות / ניסיונות שאלון)',
 			'group'   => 'הקורסים שלי',
-			'css'     => '.tutor-dashboard-courses-wrapper .tutor-nav.tutor-nav-primary{display:none!important;}',
+			'css'     => '.tutor-dashboard-courses-tab{display:none!important;}',
 			'default' => 1,
 		),
 	);
